@@ -1,0 +1,11 @@
+{
+  "name": "movie_sub_sync",
+  "version": "1.0.0",
+  "description": "a tool to fix out of syn subtitle files for movies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saeed Bahatheq",
+  "license": "ISC"
+}

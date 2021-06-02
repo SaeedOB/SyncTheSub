@@ -1,0 +1,28 @@
+1
+00:00:00,240 --> 00:00:05,610
+Everyone, welcome to the web developer Bootcamp 2.0, the only course you need to learn web development,
+
+2
+00:00:05,700 --> 00:00:07,270
+at least according to my slides.
+
+3
+00:00:07,470 --> 00:00:11,550
+Now, I know that claim sounds like something out of a late night infomercial, but this course does
+
+4
+00:00:11,550 --> 00:00:15,050
+have a long proven track record of helping people become developers.
+
+5
+00:00:15,570 --> 00:00:21,690
+That is very different, however, from claiming to teach every single topic language framework under
+
+6
+00:00:21,690 --> 00:00:22,170
+the sun.
+
+7
+00:00:22,410 --> 00:00:23,970
+That is not the goal of this course.
+

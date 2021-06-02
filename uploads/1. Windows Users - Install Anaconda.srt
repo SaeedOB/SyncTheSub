@@ -1,0 +1,315 @@
+1
+00:00:00,480 --> 00:00:06,400
+Okay so it's time to set up your computer and install the necessary software for this course.
+
+2
+00:00:06,720 --> 00:00:12,900
+In this lesson I will show you how to install Python and configure your local environment so that way
+
+3
+00:00:12,960 --> 00:00:18,060
+we don't have to rely on the trial environment on Jupiter dot org.
+
+4
+00:00:18,060 --> 00:00:22,290
+I will show you how to install Python Anaconda on a Windows machine.
+
+5
+00:00:22,530 --> 00:00:25,130
+So if you've got a Mac skip to the next video.
+
+6
+00:00:25,950 --> 00:00:32,620
+But before we begin let me explain what Python Anaconda is and why we're downloading it.
+
+7
+00:00:32,880 --> 00:00:35,640
+Anaconda is a python distribution.
+
+8
+00:00:35,640 --> 00:00:41,250
+And this means that Anaconda aims to provide everything you need for data science in one place.
+
+9
+00:00:41,250 --> 00:00:47,460
+It's essentially a bundle of software and code that makes it easy for getting set up for Data Science
+
+10
+00:00:47,520 --> 00:00:49,150
+and machine learning.
+
+11
+00:00:49,380 --> 00:00:54,930
+For example the anaconda bundle already includes the Jupiter notebook so you don't have to separately
+
+12
+00:00:54,930 --> 00:01:02,180
+download it and install it and it also includes tons and tons of Python packages and libraries that
+
+13
+00:01:02,180 --> 00:01:04,520
+we'll be using in this course.
+
+14
+00:01:04,520 --> 00:01:06,440
+What do I mean by libraries.
+
+15
+00:01:06,440 --> 00:01:13,820
+Well remember how we wrote import pandas or import Mac plot lib or import psychic learn in our first
+
+16
+00:01:13,820 --> 00:01:15,040
+project.
+
+17
+00:01:15,290 --> 00:01:21,740
+Usually you'd have to download all these packages one by one before you can use them in your project.
+
+18
+00:01:21,740 --> 00:01:28,160
+But by downloading Anaconda we're going to be getting all these packages in one go that way we don't
+
+19
+00:01:28,160 --> 00:01:30,610
+have to worry about setup and configuration.
+
+20
+00:01:30,620 --> 00:01:34,320
+Later on in the course one word of warning though.
+
+21
+00:01:34,400 --> 00:01:39,560
+If you Google the word Anaconda you're probably not gonna get what you're looking for.
+
+22
+00:01:39,620 --> 00:01:47,030
+You'll want to search Anaconda Python to find the Continuum dot Io Web site or alternatively click on
+
+23
+00:01:47,030 --> 00:01:52,340
+the link in the lessons resources to be directed directly to the download page.
+
+24
+00:01:52,340 --> 00:01:55,900
+Now don't click the download button just yet.
+
+25
+00:01:55,910 --> 00:02:02,690
+First you have to do a very important check on your machine your laptop or your desktop computer will
+
+26
+00:02:02,690 --> 00:02:04,730
+come in one of two flavors.
+
+27
+00:02:04,910 --> 00:02:10,910
+You will either have a 64 bit machine or a 32 bit machine.
+
+28
+00:02:10,910 --> 00:02:14,920
+And here's how you check which flavor of computer you've got.
+
+29
+00:02:14,970 --> 00:02:22,140
+You can go to your control panel and there under a system type you should see whether you've got a 32
+
+30
+00:02:22,140 --> 00:02:26,850
+bit operating system or a 64 bit operating system.
+
+31
+00:02:26,850 --> 00:02:33,540
+So with that in mind make a note of the type of processor and go back to the download page on continuum
+
+32
+00:02:33,570 --> 00:02:39,840
+that Io here you should see a big green download button click on that big green download button.
+
+33
+00:02:39,900 --> 00:02:47,550
+Only if you've got a 64 bit processor if you've got a 32 bit machine click on the link below.
+
+34
+00:02:47,580 --> 00:02:51,040
+The thing about Python is it also comes in two flavors.
+
+35
+00:02:51,060 --> 00:02:56,630
+We're going to go with the newer version of Python Python 3.
+
+36
+00:02:57,270 --> 00:03:03,450
+So while Anaconda is downloading this is a good time to go for a coffee or tea after the download completes.
+
+37
+00:03:03,540 --> 00:03:05,920
+You can start the installation.
+
+38
+00:03:06,120 --> 00:03:11,240
+We're gonna be presented with one of those standard setup Wizard's so we're going to click next.
+
+39
+00:03:11,310 --> 00:03:16,350
+Then when I agreed to the license agreement for probably signing away our first born child at this point.
+
+40
+00:03:16,410 --> 00:03:22,020
+But on the next parts of the Wizard I'm just gonna go with the recommended options so I'm gonna say
+
+41
+00:03:22,320 --> 00:03:29,490
+install for just myself and for the destination folder I'm also going to stick with the default for
+
+42
+00:03:29,490 --> 00:03:30,840
+the advanced options.
+
+43
+00:03:30,900 --> 00:03:35,310
+I'm going to leave them as they are in the installer as well with the first one untucked and the second
+
+44
+00:03:35,310 --> 00:03:37,860
+one ticked now.
+
+45
+00:03:37,900 --> 00:03:42,400
+My computer actually isn't as fast as it appears to be because I'm speeding up the video here but this
+
+46
+00:03:42,670 --> 00:03:45,760
+installation process actually takes a little while too.
+
+47
+00:03:45,930 --> 00:03:52,210
+So just be patient and after the installer finishes it's going to click finish.
+
+48
+00:03:52,210 --> 00:03:59,000
+Now it's time to fire up Anaconda and the Jupiter notebook just to see if everything's working click
+
+49
+00:03:59,000 --> 00:04:05,750
+on your start menu and then go find the anaconda command prompt you should see a little black window
+
+50
+00:04:05,750 --> 00:04:16,640
+like this appear and in this window type Python space dash dash version and here you should see the
+
+51
+00:04:16,700 --> 00:04:18,740
+version of Python that you've installed.
+
+52
+00:04:18,740 --> 00:04:20,160
+And as we've mentioned before.
+
+53
+00:04:20,300 --> 00:04:24,950
+Make sure the version of Python is three point six or higher.
+
+54
+00:04:24,950 --> 00:04:32,210
+Now it's very useful to have the anaconda command prompt handy so in your taskbar at the bottom right
+
+55
+00:04:32,210 --> 00:04:35,690
+click and pin this program to the taskbar.
+
+56
+00:04:35,780 --> 00:04:40,660
+That way you can fire up the anaconda prompt very quickly.
+
+57
+00:04:41,000 --> 00:04:45,360
+Next let me show you how to start up your own Jupiter notebook.
+
+58
+00:04:46,360 --> 00:04:49,690
+You can do that by simply typing Jupiter.
+
+59
+00:04:49,690 --> 00:04:53,850
+Space notebook and hit enter.
+
+60
+00:04:53,920 --> 00:05:01,070
+Now give it a minute and you should see your browser firing up with the folder structure on your C drive.
+
+61
+00:05:01,370 --> 00:05:09,050
+And when you click on new you should be able to start a new Python 3 notebook so congratulations on
+
+62
+00:05:09,050 --> 00:05:10,280
+getting that working.
+
+63
+00:05:10,490 --> 00:05:13,460
+But starting up is only part of the equation.
+
+64
+00:05:13,510 --> 00:05:19,760
+Also have to be able to shut this down properly and to shut down open notebook go to file close and
+
+65
+00:05:19,760 --> 00:05:25,330
+halt and you can log out and close your browser window.
+
+66
+00:05:25,370 --> 00:05:33,230
+But the important part is actually to terminate the notebook from the anaconda command prompt and you
+
+67
+00:05:33,230 --> 00:05:36,350
+need to do this with a keyboard shortcut.
+
+68
+00:05:36,350 --> 00:05:43,190
+You can see here in the instructions it says use control C to stop the server and shut down all kernels
+
+69
+00:05:43,430 --> 00:05:52,290
+twice to skip confirmation so on your keyboard press controls see twice you should then see the messages
+
+70
+00:05:52,560 --> 00:05:59,350
+interrupted shutting down kernels and that's how you close out of Jupiter completely.
+
+71
+00:05:59,400 --> 00:06:05,870
+Finally let me show you all the components that were installed along side with Anaconda and to do that.
+
+72
+00:06:05,910 --> 00:06:09,060
+Let me show you the anaconda navigator.
+
+73
+00:06:09,060 --> 00:06:14,490
+This is also an alternative way of firing up the Jupiter notebook instead of going through the anaconda
+
+74
+00:06:14,490 --> 00:06:17,380
+prompt after it finishes loading.
+
+75
+00:06:17,400 --> 00:06:20,540
+You should see a window like this from here.
+
+76
+00:06:20,580 --> 00:06:26,940
+We can launch the Jupiter notebook or the spider Python I.T. or even our studio.
+
+77
+00:06:26,970 --> 00:06:29,480
+So congratulations on getting set up.
+
+78
+00:06:29,730 --> 00:06:36,850
+If you have any problems or had any issues ask in the Q and A section for this lesson I'll see you in
+
+79
+00:06:36,850 --> 00:06:38,640
+the next videos.

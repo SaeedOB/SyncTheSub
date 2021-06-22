@@ -5,14 +5,51 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const _ = require('lodash');
 const fs = require('fs')
+const https = require('https');
+const mongoose = require('mongoose');
 
+//-- configuring a mongooDB database -------------------------------------------
+const atlasUrl = 'mongodb+srv://admin:admin@movieposters.lljl0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const baseUrl = 'https://image.tmdb.org/t/p/w185'
+
+mongoose.connect(atlasUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(() => {
+    console.log('MongoDB Connected…');
+  })
+  .catch(err => console.log(err));
+
+const posterLink = new mongoose.Schema({
+  url: {
+    type: String,
+    required: true
+  },
+  posterID: {
+    type: Number,
+    required: true
+  }
+});
+
+const Poster = mongoose.model('Poster', posterLink);
+
+const backgroundPosters = new mongoose.Schema({
+  url: {
+    type: String,
+    required: true
+  },
+  posterID: {
+    type: Number,
+    required: true
+  }
+});
+
+const BackgroundPoster = mongoose.model('BackgroundPoster', backgroundPosters);
 
 const app = express();
 
-// enable files upload
 app.use(fileUpload());
-
-//add other middleware
+app.set('view engine', 'ejs');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -25,7 +62,42 @@ app.use(express.static('public'))
 const port = 3000;
 
 // -----------------------------------------------------------------------------
+async function addToMongoDB(record) {
+  return BackgroundPoster.create(record);
+}
 
+async function readBackgroundPosters() {
+  return BackgroundPoster.find({}).exec();
+}
+
+async function produceListOfPosters() {
+  await BackgroundPoster.deleteMany({}, function() {
+    console.log('success in deleting many');
+  }).exec();
+  const promises = [];
+  const mongoCreatePromises = [];
+  const count = await Poster.count();
+  console.log('count is ', count);
+  for (var x = 0; x < 60; x++) {
+    var random = Math.floor(Math.random() * count)
+    const tempPoster = Poster.findOne().skip(random).exec();
+    promises.push(tempPoster)
+  }
+  const postersList = await Promise.all(promises);
+  for (const result of postersList) {
+    const record = {
+      url: result.url,
+      posterID: result.posterID
+    };
+    mongoCreatePromises.push(addToMongoDB(record))
+  }
+  await Promise.all(mongoCreatePromises);
+}
+
+function fetchRandomPosters() {
+  var randomInt = Math.floor(Math.random() * 100000);
+  const apiMoviePosterCall = 'https://api.themoviedb.org/3/movie/' + randomInt + '/images?api_key=ac6f9409a8ade08e0059a315b3c807bc&language=en-US&include_image_language=en%2C%20null'
+}
 
 function parseTime(str) {
   var elems = str.replace(',', '.').split(':').map(parseFloat);
@@ -60,16 +132,11 @@ function createShifter(specs) {
   return function(pos) {
     var start = specs[0],
       end = specs[1];
-    // console.log('inside createShifter function are: ', start, end);
     var slope = (end.shift - start.shift) / (end.at - start.at);
-    // console.log('this is slope: ', slope);
     var shift = start.shift + (slope * (pos - start.at))
-    // console.log('this is shift: ', shift);
-    // console.log('this is pos: ', pos);
     var output = pos + shift;
     output = parseFloat(output)
-    // console.log('this is output: ', output);
-    return output;
+    return output > 0 ? output : 0;
   }
 }
 
@@ -103,25 +170,20 @@ function createWorkingFile(filename) {
   return subs;
 }
 
-function shiftSubs(subs) {
-
-}
-
 function main(filename, userInput) {
-  // let wStream = fs.createWriteStream(__dirname + '/output.srt');
-  let wStream = fs.createWriteStream(__dirname + '/'
-  + filename.replace(/\w+(?=\.)/g, filename.match(/\w+(?=\.)/g) + '_fixedOutput'));
+  // let wStream = fs.createWriteStream(__dirname + '/' +
+  //   filename.replace(/\w+(?=\.)/g, filename.match(/\w+(?=\.)/g) + '_fixedOutput'));
+  let wStream = fs.createWriteStream(__dirname + '/' + 'output.srt');
 
   const subs = createWorkingFile(filename);
-  const specs = parseUserInput(userInput); // should return two objects, { at: t_i, shift: s_i }
-  console.log(specs);
-  console.log(filename);
+  const specs = parseUserInput(userInput);
+  console.log('specs are: ', specs);
+  console.log('filename is: ', filename);
   var shifter = createShifter(specs);
   subs.forEach(function(sub) {
     sub.start = shifter(sub.start);
     sub.end = shifter(sub.end);
   })
-
   subs
     .map(function(sub) {
       return [sub.id, '\r\n', stringifyTime(sub.start), ' --> ', stringifyTime(sub.end), '\r\n', sub.text, '\r\n'].join('')
@@ -130,32 +192,40 @@ function main(filename, userInput) {
       wStream.write(str, (err) => {
         if (err) {
           console.log(err);
-        } else {
-        }
+        } else {}
       })
     });
-
-
-
 }
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
-})
+app.get('/', async (req, res) => {
+  await produceListOfPosters();
+  const posters = await readBackgroundPosters();
+  res.render('home', {
+    posters: posters,
+  });
+});
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
   if (req.files) {
     var file = req.files.subtitleFile;
     var filename = file.name;
-    file.mv(__dirname + '/uploads/' + filename, function(err) {
-
+    file.mv(__dirname + '/uploads/' + filename, async function(err) {
       main(filename, req.body);
+      res.redirect('/download');
     })
   }
-
 });
 
+app.get('/download', async (req, res) => {
+  const posters = await readBackgroundPosters();
+  res.render('download', {
+    posters: posters,
+  })
+})
 
+app.post('/download', async (req, res) => {
+  res.download('./output.srt')
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

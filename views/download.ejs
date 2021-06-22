@@ -1,0 +1,35 @@
+<%- include('partials/header'); -%>
+
+<div class="content">
+  <h1>Sync The Sub</h1>
+
+
+  <form action="/download" method="post" class='myForm'>
+
+    <label class='important' for="">Your file is ready!</label>
+
+
+      <input class='submit' type="submit" value="Download">
+    <div class="subgrid">
+      <h2>How to use</h2>
+      <p>always provide two data points. The alogrithm can detect if the out of sync effect is caused by a constant time shift, or by a linearly variable time shift.</p>
+      <h2>Note</h2>
+      <p>the website is not yet optimized for exponential out of sync errors, we are working to improve the algoithm to acommodate more scenarios.</p>
+    </div>
+
+
+  </form>
+
+</div>
+
+<div class="background">
+  <% posters.forEach(function(poster){ %>
+  <div class="img-gradient">
+    <img class="poster" src="<%=poster.url%>" alt="">
+  </div>
+  <% }) %>
+</div>
+
+
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,291 @@
+1
+00:00:00,490 --> 00:00:06,390
+Okay so it's time to set up your computer and install the necessary software for this course.
+
+2
+00:00:06,720 --> 00:00:12,900
+In this lesson I will show you how to install Python and configure your local environment so that way
+
+3
+00:00:12,960 --> 00:00:18,210
+we don't have to rely on the trial environment on Jupiter dot org.
+
+4
+00:00:18,210 --> 00:00:22,950
+I will show you how to install Python Anaconda on Mac OS.
+
+5
+00:00:22,950 --> 00:00:27,660
+If you're running a Windows machine check out the other set of video instead.
+
+6
+00:00:27,830 --> 00:00:34,520
+But before we begin let me explain what Python Anaconda is and why we're downloading it.
+
+7
+00:00:34,760 --> 00:00:37,320
+Anaconda is a python distribution.
+
+8
+00:00:37,550 --> 00:00:43,130
+And this means that Anaconda aims to provide everything you need for data science in one place.
+
+9
+00:00:43,130 --> 00:00:49,340
+It's essentially a bundle of software and code that makes it easy for getting set up for Data Science
+
+10
+00:00:49,430 --> 00:00:51,070
+and machine learning.
+
+11
+00:00:51,290 --> 00:00:56,840
+For example the anaconda bundle already includes the Jupiter notebook so you don't have to separately
+
+12
+00:00:56,840 --> 00:01:03,780
+download it and install it and it also includes tons and tons of Python packages and libraries that
+
+13
+00:01:03,780 --> 00:01:06,030
+we'll be using in this course.
+
+14
+00:01:06,120 --> 00:01:08,070
+What do I mean by libraries.
+
+15
+00:01:08,070 --> 00:01:16,640
+Well remember how we wrote import pandas or import Mac plot lib or import I learn in our first project.
+
+16
+00:01:16,890 --> 00:01:23,020
+Usually you'd have to download all these packages one by one before you can use them in your project.
+
+17
+00:01:23,340 --> 00:01:29,760
+But by downloading Anaconda we're going to be getting all these packages in one go that way we don't
+
+18
+00:01:29,760 --> 00:01:32,210
+have to worry about setup and configuration.
+
+19
+00:01:32,220 --> 00:01:35,930
+Later on in the course one word of warning though.
+
+20
+00:01:36,000 --> 00:01:41,160
+If you Google the word Anaconda you're probably not gonna get what you're looking for.
+
+21
+00:01:41,220 --> 00:01:48,630
+You'll want to search Anaconda Python to find the Continuum dot Io Web site or alternatively click on
+
+22
+00:01:48,630 --> 00:01:54,170
+the link in the lessons resources to be directed directly to the download page.
+
+23
+00:01:54,180 --> 00:01:57,670
+The thing about Python is it also comes in two flavors.
+
+24
+00:01:57,690 --> 00:02:01,610
+We're going to go with the newer version of Python.
+
+25
+00:02:01,830 --> 00:02:09,630
+Python 3 so while anacondas downloading this is a good time to go for a coffee or tea after the download
+
+26
+00:02:09,630 --> 00:02:12,990
+completes you can start the installation.
+
+27
+00:02:13,140 --> 00:02:18,300
+We're going to be presented with one of those standards set up wizards so we're gonna click next.
+
+28
+00:02:18,340 --> 00:02:23,370
+Then when I agreed to the license agreement for probably signing away our first born child at this point.
+
+29
+00:02:23,440 --> 00:02:29,200
+But on the next parts of the Wizard I'm just gonna go with the recommended options so I'm gonna seat
+
+30
+00:02:29,500 --> 00:02:30,850
+install for just myself.
+
+31
+00:02:32,080 --> 00:02:38,150
+And for the destination folder I'm also going to stick with the default power my computer actually isn't
+
+32
+00:02:38,150 --> 00:02:43,310
+as fast as it appears to be because I'm speeding up the video here but this installation process actually
+
+33
+00:02:43,310 --> 00:02:44,660
+takes a little while too.
+
+34
+00:02:44,820 --> 00:02:53,610
+So just be patient and after the installer finishes I'm just gonna click close and move to trash and
+
+35
+00:02:53,610 --> 00:02:54,150
+that's it.
+
+36
+00:02:55,720 --> 00:03:02,350
+Now it's time to fire up Anaconda and the Jupiter notebook just to see if everything's working click
+
+37
+00:03:02,350 --> 00:03:07,770
+on the little magnifying glass in the top right corner to bring up the spotlights search.
+
+38
+00:03:08,230 --> 00:03:15,850
+Alternatively you can use the command space keyboard shortcut to bring up the same thing then type terminal
+
+39
+00:03:17,230 --> 00:03:18,780
+and hit enter.
+
+40
+00:03:18,940 --> 00:03:22,060
+Now your terminal might be styled a little differently from mine.
+
+41
+00:03:22,060 --> 00:03:27,340
+I've made my text a little bigger and I've used the the black background so that's something you can
+
+42
+00:03:27,400 --> 00:03:33,410
+set under the preferences so if it's the first time you're using terminal you probably have it set to
+
+43
+00:03:33,410 --> 00:03:39,680
+the basic theme instead of hombre which is what I've got but hopefully that will make it a little bit
+
+44
+00:03:39,680 --> 00:03:50,300
+easier to read what I'm about to type and in this window type Python space dash dash version and here
+
+45
+00:03:50,300 --> 00:03:57,240
+you should see the version of Python that you've installed as well as the version of Anaconda and as
+
+46
+00:03:57,240 --> 00:03:58,470
+we've mentioned before.
+
+47
+00:03:58,530 --> 00:04:05,060
+Make sure the version of Python is three point six or higher next.
+
+48
+00:04:05,080 --> 00:04:09,530
+Let me show you how to start up your own Jupiter notebook.
+
+49
+00:04:09,590 --> 00:04:11,710
+You can do that by simply typing.
+
+50
+00:04:11,810 --> 00:04:12,290
+Jupiter
+
+51
+00:04:15,890 --> 00:04:20,120
+space notebook and hit enter.
+
+52
+00:04:20,120 --> 00:04:21,470
+Now give it a minute.
+
+53
+00:04:21,500 --> 00:04:24,440
+You should see Jupiter firing up in your browser.
+
+54
+00:04:24,530 --> 00:04:28,610
+Showing you the folder structure in your home directory.
+
+55
+00:04:28,790 --> 00:04:36,480
+And when you click on new you should be able to start a new Python 3 notebook so congratulations on
+
+56
+00:04:36,480 --> 00:04:40,910
+getting that working but starting up is only part of the equation.
+
+57
+00:04:40,950 --> 00:04:47,190
+Also have to be able to shut this down properly and to shut down open notebook go to a file close and
+
+58
+00:04:47,190 --> 00:04:53,460
+halt and you can log out and close your browser window.
+
+59
+00:04:53,510 --> 00:05:00,680
+But the important part is terminating the Jupiter notebook from the terminal and you can do this with
+
+60
+00:05:00,680 --> 00:05:02,510
+a keyboard shortcut.
+
+61
+00:05:02,600 --> 00:05:09,470
+You can see here in the instructions it says use control C to stop the server and shut down all kernels
+
+62
+00:05:09,710 --> 00:05:18,560
+twice to skip confirmation so on your keyboard press controls see twice you should then see the messages
+
+63
+00:05:18,920 --> 00:05:24,620
+shutting down kernels and that's how you close out of Jupiter completely.
+
+64
+00:05:24,620 --> 00:05:30,890
+Finally let me show you all the components that were installed alongside with Anaconda and to do that.
+
+65
+00:05:31,100 --> 00:05:33,720
+Let me show you the anaconda Navigator.
+
+66
+00:05:33,980 --> 00:05:38,030
+So go to your launcher and find the anaconda navigator.
+
+67
+00:05:38,030 --> 00:05:44,950
+Alternatively search for Anaconda navigator in your spotlight after it finishes loading.
+
+68
+00:05:45,000 --> 00:05:48,140
+You should see a window like this from here.
+
+69
+00:05:48,180 --> 00:05:55,110
+We can launch the Jupiter notebook or the spider Python I.D. or even our studio.
+
+70
+00:05:55,110 --> 00:05:55,560
+All right.
+
+71
+00:05:55,590 --> 00:05:58,050
+So congratulations on getting set up.
+
+72
+00:05:58,290 --> 00:06:04,560
+If you have any problems or had any issues ask in the Q and A section for this lesson.
+
+73
+00:06:04,560 --> 00:06:06,080
+I'll see you in the next videos.

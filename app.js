@@ -227,6 +227,7 @@ app.post('/download', async (req, res) => {
   res.download('./output.srt')
 })
 
+console.log("port is ", port);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

@@ -59,7 +59,6 @@ app.use(morgan('dev'));
 app.use(express.static('public'))
 
 
-const port = process.env.PORT || 3000;
 
 // -----------------------------------------------------------------------------
 async function addToMongoDB(record) {
@@ -227,7 +226,9 @@ app.post('/download', async (req, res) => {
   res.download('./output.srt')
 })
 
-console.log("port is ", port);
+const port = process.env.PORT || 3000;
+
+console.log("port is ", process.env.PORT);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

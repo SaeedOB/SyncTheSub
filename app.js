@@ -57,6 +57,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(morgan('dev'));
 app.use(express.static('public'))
+app.set('trust proxy', true)
 
 
 
@@ -204,7 +205,11 @@ app.get('/', async (req, res) => {
   });
 });
 
+
 app.post('/', async (req, res) => {
+  var ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() ||
+         req.socket.remoteAddress
+  console.log('ip address is', ip);
   if (req.files) {
     var file = req.files.subtitleFile;
     var filename = file.name;
@@ -226,8 +231,8 @@ app.post('/download', async (req, res) => {
   res.download('./output.srt')
 })
 
-// const port = process.env.PORT || 3000;
-const port = 80;
+const port = process.env.PORT || 3000;
+// const port = 80;
 // console.log("port is ", process.env);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

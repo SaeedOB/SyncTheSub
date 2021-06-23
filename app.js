@@ -226,9 +226,9 @@ app.post('/download', async (req, res) => {
   res.download('./output.srt')
 })
 
-const port = process.env.PORT || 3000;
-
-console.log("port is ", process.env);
+// const port = process.env.PORT || 3000;
+const port = 80;
+// console.log("port is ", process.env);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

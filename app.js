@@ -207,8 +207,7 @@ app.get('/', async (req, res) => {
 
 
 app.post('/', async (req, res) => {
-  var ip = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() ||
-         req.socket.remoteAddress
+  var ip = req.socket.remoteAddress;
   console.log('ip address is', ip);
   if (req.files) {
     var file = req.files.subtitleFile;
@@ -233,7 +232,6 @@ app.post('/download', async (req, res) => {
 
 // const port = process.env.PORT || 3000;
 const port = 80;
-// console.log("port is ", process.env);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

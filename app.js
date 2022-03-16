@@ -7,6 +7,8 @@ const _ = require('lodash');
 const fs = require('fs')
 const https = require('https');
 const mongoose = require('mongoose');
+var crypto = require('crypto');
+
 
 //-- configuring a mongooDB database -------------------------------------------
 const atlasUrl = 'mongodb+srv://admin:admin@movieposters.lljl0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
@@ -170,10 +172,11 @@ function createWorkingFile(filename) {
   return subs;
 }
 
-function main(filename, userInput) {
+function main(filename, hashID, userInput) {
   // let wStream = fs.createWriteStream(__dirname + '/' +
   //   filename.replace(/\w+(?=\.)/g, filename.match(/\w+(?=\.)/g) + '_fixedOutput'));
-  let wStream = fs.createWriteStream(__dirname + '/' + 'output.srt');
+  let newDirectoryFile = __dirname + '/' + hashID + '.srt';
+  let wStream = fs.createWriteStream(newDirectoryFile);
 
   const subs = createWorkingFile(filename);
   const specs = parseUserInput(userInput);
@@ -206,29 +209,39 @@ app.get('/', async (req, res) => {
 });
 
 
+
 app.post('/', async (req, res) => {
   var ip = req.socket.remoteAddress;
   console.log('ip address is', ip);
   if (req.files) {
     var file = req.files.subtitleFile;
+    var ip = req.socket.remoteAddress;
     var filename = file.name;
+    let data = filename + ip + Date.now();
+    // console.log('data is ', data, ' type is', typeof(data));
+    var hashID = crypto.createHash('md5').update(data).digest("hex");
+    console.log('hashID is ', hashID, ' type is', typeof(hashID));
     file.mv(__dirname + '/uploads/' + filename, async function(err) {
-      main(filename, req.body);
-      res.redirect('/download');
+      main(filename, hashID, req.body);
+      res.redirect('/download/'+hashID);
     })
   }
 });
 
-app.get('/download', async (req, res) => {
+app.get('/download/:subtitleID', async (req, res) => {
   const posters = await readBackgroundPosters();
+  console.log('did it arrive? ', req.params.subtitleID);
   res.render('download', {
     posters: posters,
+    hashID: req.params.subtitleID
   })
 })
 
-app.post('/download', async (req, res) => {
-  res.download('./output.srt')
+app.post('/download/:subtitleID', async (req, res) => {
+  console.log('did it arrive again? ', req.params.subtitleID);
+  res.download('./' + req.params.subtitleID + '.srt')
 })
+
 
 // const port = process.env.PORT || 3000;
 const port = 80;
